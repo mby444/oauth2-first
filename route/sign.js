@@ -9,5 +9,6 @@ export const signRoute = Router();
 //   res.render("login");
 // });
 signRoute.get("/", (req, res) => {
-  res.render("signin");
+  const targetPath = req.query.target_path || "";
+  res.render("signin", { targetPath });
 });

@@ -8,4 +8,4 @@ const userSchema = new Schema({
   updatedAt: String,
 });
 
-export default model("users", userSchema);
+export default model("fb_users", userSchema);

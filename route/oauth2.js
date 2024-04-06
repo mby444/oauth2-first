@@ -32,6 +32,7 @@ oauth2Route.get("/callback", async (req, res) => {
     const userData = {
       name: data.name,
       email: data.email,
+      provider: "google",
       createdAt: Date(),
       updatedAt: Date(),
     };

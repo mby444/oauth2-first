@@ -12,6 +12,6 @@ export const auth = async (req, res, next) => {
     req.user = { name, email, createdAt, updatedAt };
     next();
   } catch (err) {
-    res.redirect("/sign/login");
+    res.redirect("/signin");
   }
 };

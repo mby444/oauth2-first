@@ -13,7 +13,7 @@ const port = process.env.PORT;
 app.set("view engine", "ejs");
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use("/sign", signRoute);
+app.use("/signin", signRoute);
 app.use("/oauth2", oauth2Route);
 app.use("/", route);
 

@@ -9,6 +9,8 @@ import "../config/dotenv.js";
 export const oauth2Route = Router();
 
 oauth2Route.get("/", (req, res) => {
+  const { target_path: targetPath = "" } = req.query;
+  res.cookie("sign_target_path", targetPath);
   res.redirect(authorizationUrl);
 });
 
@@ -42,8 +44,10 @@ oauth2Route.get("/callback", async (req, res) => {
       ? await updateUser(data.email, updatedData)
       : await saveUser(userData);
 
+    const ridirectPath = req.cookies.sign_target_path || "/";
+    res.cookie("sign_target_path", "", { maxAge: 0 });
     res.cookie("token", jwtToken, cookieOpts);
-    res.redirect("/");
+    res.redirect(ridirectPath);
   } catch (err) {
     res.render("error", { message: err.message });
   }
